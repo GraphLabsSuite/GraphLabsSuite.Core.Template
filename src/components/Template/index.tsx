@@ -128,8 +128,20 @@ export class Template extends Component<{}, State> {
                 graph.addVertex(new Vertex(v));
             });
             edges.forEach((e: any) => {
-                if (e.name) {
-                    graph.addEdge(new Edge(graph.getVertex(e.source)[0], graph.getVertex(e.target)[0], e.name[0]));
+                if (e.name && e.weightLabel && e.isDirected){
+                    graph.addEdge(new Edge(graph.getVertex(e.source)[0], graph.getVertex(e.target)[0], e.name, e.weightLabel, e.isDirected));
+                } else if (e.name && e.weightLabel){
+                    graph.addEdge(new Edge(graph.getVertex(e.source)[0], graph.getVertex(e.target)[0], e.name, e.weightLabel));
+                } else if (e.name  && e.isDirected){
+                    graph.addEdge(new Edge(graph.getVertex(e.source)[0], graph.getVertex(e.target)[0], e.name, '', e.isDirected));
+                } else if (e.weightLabel && e.isDirected){
+                    graph.addEdge(new Edge(graph.getVertex(e.source)[0], graph.getVertex(e.target)[0], '', e.weightLabel[0], e.isDirected));
+                } else if (e.name) {
+                    graph.addEdge(new Edge(graph.getVertex(e.source)[0], graph.getVertex(e.target)[0], e.name));
+                } else if (e.weightLabel) {
+                    graph.addEdge(new Edge(graph.getVertex(e.source)[0], graph.getVertex(e.target)[0], '', e.weightLabel));
+                } else if (e.isDirected) {
+                    graph.addEdge(new Edge(graph.getVertex(e.source)[0], graph.getVertex(e.target)[0], '', '', e.isDirected));
                 } else {
                     graph.addEdge(new Edge(graph.getVertex(e.source)[0], graph.getVertex(e.target)[0]));
                 }
@@ -188,6 +200,7 @@ export class Template extends Component<{}, State> {
             incidentEdges={false}
             weightedEdges={false}
             isDirected={false}
+            weightNamedEdges={false}
         />;
 
     }

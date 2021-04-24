@@ -14,6 +14,7 @@ export interface GVProps {
     incidentEdges?: boolean;
     weightedEdges?: boolean;
     isDirected?: boolean;
+    weightNamedEdges?: boolean;
 }
 
 let adapter: WritableAdapter;
@@ -36,6 +37,7 @@ export class GraphVisualizer extends React.Component<GVProps> {
                 incidentEdges={this.props.incidentEdges}
                 weightedEdges={this.props.weightedEdges}
                 isDirected={this.props.isDirected}
+                weightNamedEdges={this.props.weightNamedEdges}
 
             />;
         } else if (this.props.adapterType == 'readable' || this.props.adapterType == null) {
@@ -48,6 +50,7 @@ export class GraphVisualizer extends React.Component<GVProps> {
                 incidentEdges={this.props.incidentEdges}
                 weightedEdges={this.props.weightedEdges}
                 isDirected={this.props.isDirected}
+                weightNamedEdges={this.props.weightNamedEdges}
 
             />;
             console.log(ReadableAdapter.prototype.props.graph);
