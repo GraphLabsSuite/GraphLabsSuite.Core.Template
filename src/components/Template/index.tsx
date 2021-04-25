@@ -135,7 +135,7 @@ export class Template extends Component<{}, State> {
                 } else if (e.name  && e.isDirected){
                     graph.addEdge(new Edge(graph.getVertex(e.source)[0], graph.getVertex(e.target)[0], e.name, '', e.isDirected));
                 } else if (e.weightLabel && e.isDirected){
-                    graph.addEdge(new Edge(graph.getVertex(e.source)[0], graph.getVertex(e.target)[0], '', e.weightLabel[0], e.isDirected));
+                    graph.addEdge(new Edge(graph.getVertex(e.source)[0], graph.getVertex(e.target)[0], '', e.weightLabel, e.isDirected));
                 } else if (e.name) {
                     graph.addEdge(new Edge(graph.getVertex(e.source)[0], graph.getVertex(e.target)[0], e.name));
                 } else if (e.weightLabel) {
